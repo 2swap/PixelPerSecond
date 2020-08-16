@@ -1,0 +1,45 @@
+@font-face {
+	font-family: 'Blogger';
+	src: url('Blogger.otf');
+}
+
+body, #a {
+	font-family: 'Blogger';
+	margin: 0;
+	padding: 0;
+	overflow:hidden;
+	right: 0;
+	left: 0;
+	top: 0;
+	bottom: 0;
+}
+
+#chatcontainer{
+	position:absolute;
+	padding:0;
+	margin:0;
+	right:0;
+	top:0;
+	bottom:0;
+	height:100%;
+	width:200px;
+	background-color:black;
+}
+
+#chathistory, #chatbox{
+	width:100%;
+	padding:0;
+	margin:0;
+	border:2px solid black;
+}
+
+#chathistory{
+	vertical-align:top;
+	height:90%;
+	resize:none;
+}
+
+#chatbox{
+	vertical-align:bottom;
+	height:10%;
+}

@@ -1,7 +1,7 @@
-console.log("running js...");
-var socket = io('45.79.174.161:10500');
+var socket = io('alexhontz.com', {path: "/pps/io/"});
 var canvas = document.getElementById('ctx');
 var ctx = canvas.getContext("2d");
+console.log("running js...");
 
 
 

@@ -1,12 +1,15 @@
 const fs = require('fs');
 const express = require('express');
+const socketio = require('socket.io');
 var app = express();
 
-app.use('/pps',express.static(__dirname + '/client'));
-var server = app.listen(parseInt(process.argv[2]));
-const io = require('socket.io').listen(server);
+var port = 10000
 
-console.log("Running on " + parseInt(process.argv[2]));
+app.use('/pps',express.static(__dirname + '/client'));
+var server = app.listen(port);
+const io = socketio.listen(server, {"path": "/pps/io"});
+
+console.log("Running on " + parseInt(port));
 
 var alph = " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#";
 var playerCount = 0;
@@ -17,7 +20,14 @@ var grid = new Array(sz);
 
 init();
 function init(){
-	loadGrid();
+	//loadGrid();
+	emptyGrid();
+}
+function emptyGrid(){
+	for(var y = 0; y < sz; y++){
+		grid[y] = new Array(sz);
+		for(var x = 0; x < sz; x++) grid[y][x] = 0;
+	}
 }
 function loadGrid(){
 	var data = fs.readFileSync("board.txt","utf8");
